@@ -43,26 +43,26 @@ CREATE TABLE usuarios (
 
 &nbsp;&nbsp;&nbsp;&nbsp;Conforme tanto a sistematização desenvolvida na plataforma quanto o código descrito para a criação das tabelas essenciais para a relação, percebe-se que o banco de dados do sistema de gamificação da plataforma Oportoniza é composto por três tabelas principais que consistem em:
 
-### Tabela "skins-disponiveis":
+#### Tabela "skins-disponiveis":
 &nbsp;&nbsp;&nbsp;&nbsp;Esta tabela armazena informações sobre as skins disponíveis no sistema de gamificação. Cada skin possui um identificador único (id), uma categoria que a classifica (categoria), um nome que a identifica (nome), e um nível de liberação (nivel-liberação) que indica em qual nível a skin é desbloqueada. A coluna id é a chave primária da tabela.
 
-### Tabela "niveis-recompensa":
+#### Tabela "niveis-recompensa":
 &nbsp;&nbsp;&nbsp;&nbsp;Nesta tabela, são registradas as informações sobre os níveis de recompensa no sistema. Cada nível possui um identificador único automático (nivel), que também serve como chave primária. Além disso, há uma referência para a skin disponível associada a esse nível, através da coluna skin, que é uma chave estrangeira que se relaciona com o id na tabela "skins-disponiveis".
 
-### Tabela "usuarios":
+#### Tabela "usuarios":
 &nbsp;&nbsp;&nbsp;&nbsp;Esta tabela armazena dados dos usuários da plataforma. Cada usuário é identificado por um número único automático (id), que é a chave primária da tabela. Além disso, cada usuário possui uma skin atualmente selecionada (skin-atual), que é uma referência para a tabela "skins-disponiveis" através do id, e um nível atual (nivel-atual), que é uma referência para a tabela "niveis-recompensa" através do número do nível (nivel).
 Essas três tabelas compõem a estrutura básica do banco de dados da plataforma Oportoniza, permitindo o armazenamento e gerenciamento das informações necessárias para o sistema de gamificação e personalização de usuários.
 
 
 &nbsp;&nbsp;&nbsp;&nbsp;Diante das tabelas dispostas, entende-se que o primor de um banco de dados se encontra na possibilidade de relacioná-las entre si, estabelecendo formatos de contato e sistemas de organização. Dessa forma, descreve-se as relações que se apresentam entre cada uma das tabelas abaixo:
 
-### Relação entre "skins-disponiveis" e "niveis-recompensa":
+#### Relação entre "skins-disponiveis" e "niveis-recompensa":
 &nbsp;&nbsp;&nbsp;&nbsp;Esta relação é de (1:N) (um para muitos), onde várias skins disponíveis podem estar associadas a um único nível de recompensa. Isso é representado pela coluna nivel-liberação na tabela "skins-disponiveis", que referencia o número do nível na tabela "niveis-recompensa". Portanto, a tabela "niveis-recompensa" contém uma chave estrangeira que se relaciona com o número do nível (nivel) na tabela "skins-disponiveis".
 
-### Relação entre "usuarios" e "skins-disponiveis":
+#### Relação entre "usuarios" e "skins-disponiveis":
 &nbsp;&nbsp;&nbsp;&nbsp;Na tabela "usuarios", a coluna skin-atual representa a skin atualmente selecionada pelo usuário. Essa coluna é uma chave estrangeira que referencia o id na tabela "skins-disponiveis". Isso estabelece uma relação de (N:1) (muitos para um), onde várias linhas na tabela "usuarios" podem referenciar a mesma skin na tabela "skins-disponiveis".
 
-### Relação entre "usuarios" e "niveis-recompensa":
+#### Relação entre "usuarios" e "niveis-recompensa":
 &nbsp;&nbsp;&nbsp;&nbsp;Similarmente, a coluna nivel-atual na tabela "usuarios" representa o nível atual do usuário. Essa coluna é uma chave estrangeira que referencia o número do nível (nivel) na tabela "niveis-recompensa". Assim como na relação anterior, esta é uma relação de (N:1), onde várias linhas na tabela "usuarios" podem referenciar o mesmo nível na tabela "niveis-recompensa".
 
 &nbsp;&nbsp;&nbsp;&nbsp;Portanto, as chaves estrangeiras são utilizadas para estabelecer e manter as relações entre as tabelas, garantindo integridade referencial e consistência nos dados. Isso permite que o banco de dados da plataforma Oportoniza mantenha uma estrutura coesa e funcional, facilitando a manipulação e recuperação das informações necessárias para o funcionamento do sistema de gamificação e personalização de usuários.
